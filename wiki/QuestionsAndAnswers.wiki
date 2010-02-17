@@ -1,0 +1,39 @@
+#summary One-sentence summary of this page.
+#labels questions,answers,FAQ
+
+= Introduction =
+
+This is a compilation of questions that AIDA users have had, along with some answers.  Hopefully, this will be useful to new users.
+
+= Details =
+1) *What size should the images be (both science images and PSFs)?*
+*_Answer_*
+Ideally AIDA should be able to deal with any type of images, square or not, however we discovered a bug (no yet fully identified) in the current version. I need to do more testing to find out if the problem comes from the fact that my frames were not square or the PSF did not have the same size that the images.
+I advice you to start deconvolving square frames first, make sure that when you crop the target and the PSF frames, there is enough background to determine the RON (which is estimated from the negative pixels value), if you don't have this information then you should add either a dark image (best solution), or a background and/noise value in the Setting file.
+#background = 0.
+#sigma_det = 5
+#dark_image = None
+Another difficulty to take into consideration is that the stdev of the negative pixels should be larger than sqrt(!pi/2) (see Eq 32 in Hom et al., JOSA, 2007). If not you need to "artificially" increase the value of the frame by a factor 10-100.
+
+
+2) *How many PSF images do we have to provide to AIDA? Do they have to be normalized?*
+*_Answer_*
+This depend of the variation of the PSF which varies with the AO, the seeing condition and the brightness of your target. With NACO or Keck AO I generally have 3 PSF frames when I observed Io (V=5!), at least 6 when I observe something fainter (V=13) to capture the variability of the PSF. Check the FWHM of your PSFs, for Io (V=10) the variation is less than 5%, for the V=13 target I typically get a variation of the FWHM by 7%.
+Do NOT normalize the PSF frames since AIDA will clean them up (extract the noise (see point 1), and normalize them).
+
+
+3) *My VLT/NACO image is the medium average product of a set of 19 raw frames. Should I apply the AIDA algorithm to the 19 dark-subtracted/flatfielded images...or to the final combined image?*
+*_Answer_*
+This depends of your target, its brightness, its structure (faint halo?) and the quality of your images. I will try both and compare.
+Rules of thumb: Multi-object and 1 PSF deconvolution works fine in L-M band (>3 um) because the AO system is stable (stdev(FWHM)/FWHM < 2%)  in the wavelength range and because of the strong background the SNR is poor. For anything at shorter wavelength (1-2.5) I will recommend using the averaged image and multi-PSF since the PSF variability is predominant in this case (except if your target is very bright).
+
+
+4) *How to generate the PSF images since I do not have PSF observations?* The NGS is inside the FoV of my images. Can I generate a model PSF using DAOPHOT/PSF routine within IRAF/Pyraf using the NGS in my image as PSF star...or, since they are AO images (and they always suffer from a certain degree of anisoplanatism), should I use 2-3 stars close to my extended object instead in order to have a more accurate PSF in that region?
+*_Answer_*
+This question gives an answer to point 3. You definitely need to prioritize the average target frame / multi-pSF deconvolution since you don't have a good PSF. Now the response to your question. Ideally, it is better to use stars bright to your target. If you have enough of it, I will extract as guest of your PSF several stars located near your target by to get a good sense of the variability of the image PSF.
+
+
+5) *In which cases is the AIDA algorithm feasible?  My object is extended but not very large (~ 2x FWHM of the difraction-limited PSF) and faint (SNR ~ 10 and  SNR ~ 2 in the faintest parts).*
+*_Answer_*
+AIDA is feasible in any case, it all depends of the science that you want to do. It works better on extended target (planets, cells,...) with a separation larger than the FWHM (we do super-resolve but this is still controversial in astronomy), however it should also work on point star images with a separation larger than the FWHM. If one of your companion has feature around it (Galaxy disk, cocoon) AIDA may help revealing it but we never tried this for feature with a brightness ratio larger than 10^2-10^3 (to be checked). In more complex case the restoration could be only cosmetic and you may loose the photometric information.  Best way to quantify this is to run a series of test deconvolution with artificial object (and using for instance the clean Rpsf provided by AIDA).
+Advice: Always check also if the Rpsf contains a shadow of your object, if it is the case then the deconvolution photometry may be flawed.
