@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary Q&A for using AIDA with astronomical Adaptive Optics images by F. Marchis
 #labels questions,answers,FAQ
 
 = Introduction =
