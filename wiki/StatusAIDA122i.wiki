@@ -1,0 +1,19 @@
+#summary Here a the status of the current AIDA 1.2.2i
+
+= Introduction =
+
+Below a list of improvements and remaining problems for the current version of AIDA v. 1.2.2i
+
+= Details =
+
+* Solved bug since AIDA 1.2.1
+- AIDA 1.2.2i works with  Python 2.5 and Priithon 2.5 
+- AIDA 1.2.2i was tested successfully on Mac OS 10.6 (
+- AIDA 1.2.2i was tested successfully on Linux (which one?) 
+- AIDA 1.2.2i was tested successfully on Mac OS 10.5
+- crash due to U__topPercentil  to handle negative data better was solved
+
+* Known bugs on the current version of AIDA1.2.2i
+- AIDA lost the capability to deconvolve images when the PSF and the noisy image do not have the same shape and/or (?) a square shape - Franck M. will test this
+- AIDA does not deconvolve 3D multi-frames data on Window XP - in progress (Erik/Franck)
+- AIDA1.2.1i is slower than AIDA 1.1 - due to python/priithon wrapper to FFTW (or the SWIGed C code for costfunction calculation) - in progress (Seb)
