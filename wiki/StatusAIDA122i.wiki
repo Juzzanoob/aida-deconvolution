@@ -1,4 +1,5 @@
 #summary Here a the status of the current AIDA 1.2.2i
+#labels status,issues,problems,solved
 
 = Introduction =
 
@@ -26,4 +27,4 @@ AIDA lost the capability to deconvolve images when the PSF and the noisy image d
 
 AIDA does not deconvolve 3D multi-frames data on Window XP - in progress (Erik/Franck)
 
-AIDA1.2.1i is slower than AIDA 1.1 - due to python/priithon wrapper to FFTW (or the SWIGed C code for costfunction calculation) - in progress (Seb)
+AIDA1.2.2i is slower than AIDA 1.1 - due to python/priithon wrapper to FFTW (or the SWIGed C code for costfunction calculation) - in progress (Seb)
