@@ -61,7 +61,7 @@ open an xterm window and cd ~/Test_AIDA/Titan_testimage
 
 You will run AIDA typing the following command
 
-/Priithon_25_mac/priithon_script ~/AIDA_1.2.2i/AIDA.py -S AIDA_Settings.py
+~/Priithon_25_mac/priithon_script ~/AIDA_1.2.2i/AIDA.py -S AIDA_Settings.py
 
 AIDA will run for about 6-9 min (depending of the machine)
 
