@@ -6,15 +6,15 @@
 This is a compilation of questions that AIDA users have had, along with some answers.  Hopefully, this will be useful to new users.
 
 = Details =
-1) *What size should the images be (both science images and PSFs)?*
+1) *What size/format should the images be (both science images and PSFs)?*
 
 *_Answer:_*
-Ideally AIDA should be able to deal with any type of images, square or not, however we discovered a bug (no yet fully identified) in the current version. I need to do more testing to find out if the problem comes from the fact that my frames were not square or the PSF did not have the same size that the images.
-I recommend you start deconvolving square frames first, make sure that when you crop the target and the PSF frames, there is enough background to determine the RON (which is estimated from the negative pixels value), if you don't have this information then you should add either a dark image (best solution), or a background and/noise value in the Setting file.
+The larger is the image , the longer the deconvolution process will take (5 min in mono-frame with nPSF of 256x256 on a Mac OS X Mac Book Pro computer). So the size of the image is directly related to your patience, and the speed of your computer.  Ideally AIDA can deal with any type of images, square or not, however we discovered a bug (no yet fully identified) in the current version (1.2.2i). It has been solved in the latest version of AIDA (1.3).
+We recommend you start deconvolving square frames first, make sure that when you crop the target and the PSF frames, there is enough background to estimate the RON (which is estimated from the negative pixels value), if you don't have this information then you should add either a dark image (best alternative), or a background and/noise value in the Setting file.
 #background = 0.
 #sigma_det = 5
 #dark_image = None
-Another difficulty to take into consideration is that the stdev of the negative pixels should be larger than sqrt(!pi/2) (see Eq 32 in Hom et al., JOSA, 2007). If not you need to "artificially" increase the value of the frame by a factor 10-100.
+Another difficulty to take into consideration is that the stdev of the negative pixels should be larger than sqrt(!pi/2) (see Eq 32 in Hom et al., JOSA, 2007). If not, you need to "artificially" increase the value of the frame by a factor 10-100. This is an issue that we will solve in the next version of AIDA.
 
 
 2) *How many PSF images do we have to provide to AIDA? Do they have to be normalized?*
