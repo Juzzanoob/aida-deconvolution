@@ -1,11 +1,11 @@
 #labels Phase-Implementation,Phase-Design,wishlist,features,wanted,future
-Wish list of things to improve/develop for the AIDA project
+= Wish list of things to improve/develop for the AIDA project =
 
-= Introduction =
+== Introduction ==
 
 There are a number of things we'd love to see improved for AIDA.  Below is a smattering.
 
-= Details =
+== Details ==
 
   # write how-to-use documentation and develop tutorials
   # create a version in Python 3
