@@ -1,4 +1,6 @@
+#summary Wish list of things to improve/develop for the AIDA project
 #labels Phase-Implementation,Phase-Design,wishlist,features,wanted,future
+
 = Wish list of things to improve/develop for the AIDA project =
 
 == Introduction ==
